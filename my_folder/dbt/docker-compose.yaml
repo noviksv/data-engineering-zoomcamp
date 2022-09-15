@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dbt-bq-dtc:
+    build:
+      context: .
+      target: dbt-bigquery
+    image: dbt/bigquery
+    volumes:
+      - .:/usr/app
+      - ../.google:/.google/:ro
+      - ../.google:/root/.dbt/:ro
+    ports:
+      - "8000:8000"
